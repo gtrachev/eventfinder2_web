@@ -1,5 +1,5 @@
 import React from "react";
-import loadingGif from "../../images/loading.gif";
+const loadingGif = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732075/interestImages/loading_xsoft5.gif`;
 
 const LoadingContainer: React.FC = () => {
   return (
