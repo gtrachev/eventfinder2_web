@@ -1,23 +1,23 @@
 import React from "react";
 import { Field } from "formik";
 import CheckboxImageInputField from "../../utils/formik/CheckboxImageInputField";
-import artsImage from "../../images/artsInterest.png";
-import cookingImage from "../../images/cookingInterests.png";
-import diyImage from "../../images/diyInterest.png";
-import educationImage from "../../images/educationInterest.png";
-import fitnessImage from "../../images/fitnessInterest.png";
-import hikingImage from "../../images/hikingInterest.png";
-import historyImage from "../../images/historyInterest.png";
-import itImage from "../../images/itInterest.png";
-import literatureImage from "../../images/literatureInterest.png";
-import musicImage from "../../images/musicInterest.png";
-import politicsImage from "../../images/politicsInterest.png";
-import scienceImage from "../../images/scienceInterest.png";
-import sightseeingImage from "../../images/sightseeingInterest.png";
-import sportsImage from "../../images/sportsInterest.png";
-import technologiesImage from "../../images/technologiesInterest.png";
-import travellingImage from "../../images/travellingInterest.png";
-import yogaImage from "../../images/yogaInterest.png";
+const artsImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732076/interestImages/artsInterest_yytjms.png`;
+const cookingImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732076/interestImages/cookingInterests_mlt5fu.png`;
+const diyImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732076/interestImages/diyInterest_zlabbw.png`;
+const educationImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732076/interestImages/educationInterest_ednm9p.png`;
+const fitnessImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732075/interestImages/fitnessInterest_dezphd.png`;
+const hikingImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732075/interestImages/hikingInterest_mid9ys.png`;
+const historyImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732075/interestImages/historyInterest_gq3y0b.png`;
+const itImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732075/interestImages/itInterest_jazjmz.png`;
+const literatureImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732075/interestImages/literatureInterest_vvbfjz.png`;
+const musicImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732075/interestImages/musicInterest_x7yrt6.png`;
+const politicsImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732075/interestImages/politicsInterest_p9fzpz.png`;
+const scienceImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732075/interestImages/scienceInterest_y1uspj.png`;
+const sightseeingImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732075/interestImages/sightseeingInterest_j9s8qc.png`;
+const sportsImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732075/interestImages/sportsInterest_lxypaq.png`;
+const technologiesImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732076/interestImages/technologiesInterest_gp1mvz.png`;
+const travellingImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732076/interestImages/travellingInterest_jgcm06.png`;
+const yogaImage = `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload/v1645732076/interestImages/yogaInterest_ujrbyk.png`;
 
 const InterestCategories: React.FC<{ name: string; values?: string[] }> = ({
   name,
