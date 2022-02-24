@@ -1,0 +1,682 @@
+//colors
+$primary-color: #0488ed;
+$secondary-color: #003459;
+$secondary-dark-color: #d1e8ef;
+$accent-color: #ffbd0d;
+$dark-color: #333;
+$light-color: #d1e8ef;
+$gray-color: #eeeeee;
+$white-color: #ffffff;
+$black-color: #121212;
+$danger-color: #fc4445;
+$success-color: #15db95;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@mixin smoothTransition($el: all, $duration: 200ms, $fn: linear) {
+  transition: $el $duration $fn;
+}
+
+.smoothTransition {
+  @include smoothTransition;
+}
+
+.hideMobile {
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
+// TYPOGRAFY
+textarea {
+  resize: none;
+}
+h1,
+h2,
+h3,
+h4,
+p,
+button {
+  font-weight: 400;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+.body-container,
+input,
+textarea,
+button {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.body-container {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: $secondary-color;
+  font-weight: 300;
+}
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.err-container {
+  max-width: 1300px;
+}
+.nav-link-icon {
+  @include smoothTransition($duration: 200ms, $fn: linear);
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+.nav-link {
+  color: $white-color;
+  font-weight: 400;
+  position: relative;
+  overflow: hidden;
+  .bottom-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(100%);
+  }
+  .top-link,
+  .bottom-link {
+    display: block;
+    @include smoothTransition($duration: 350ms, $fn: ease-in-out);
+  }
+  &:hover {
+    color: $accent-color;
+    cursor: pointer;
+    .top-link {
+      transform: translateY(-100%);
+    }
+    .bottom-link {
+      transform: translateY(0%);
+    }
+  }
+}
+a {
+  text-decoration: none;
+  color: $white-color;
+}
+.btn-transparent {
+  border: none;
+  background: rgba($color: #000000, $alpha: 0);
+  transition: all 200ms linear;
+  &:hover {
+    color: $accent-color;
+    cursor: pointer;
+  }
+}
+.btn-disabled {
+  background: $accent-color;
+  &:hover {
+    cursor: not-allowed;
+    background: $accent-color;
+  }
+}
+.word-break {
+  word-break: break-all;
+}
+.word-keep {
+  word-break: keep-all;
+}
+.text-start {
+  text-align: start;
+}
+.text-center {
+  text-align: center;
+}
+.text-end {
+  text-align: end;
+}
+.underline {
+  text-decoration: underline;
+}
+.decoration-dot {
+  list-style: decimal;
+}
+.fw-300 {
+  font-weight: 300;
+}
+.fw-400 {
+  font-weight: 400;
+}
+// TYPOGRAFY
+
+// OVERFLOW
+.of-hidden {
+  overflow: hidden;
+}
+.of-auto {
+  overflow: auto;
+}
+// OVERFLOW
+
+// OPACITY
+.op-1 {
+  opacity: 1;
+}
+.op-8 {
+  opacity: 0.8;
+}
+.op-5 {
+  opacity: 0.5;
+}
+// OPACITY
+
+//GAP
+.gap-auto {
+  gap: auto;
+}
+.gap-3 {
+  gap: 3rem;
+}
+.gap-2 {
+  gap: 2rem;
+}
+.gap-1 {
+  gap: 1rem;
+}
+.gap-08 {
+  gap: 0.8rem;
+}
+.gap-05 {
+  gap: 0.5rem;
+}
+.gapX-3 {
+  gap: 0 3rem;
+}
+.gapX-2 {
+  gap: 0 2rem;
+}
+.gapX-1 {
+  gap: 0 1rem;
+}
+.gapX-08 {
+  gap: 0 0.8rem;
+}
+.gapX-05 {
+  gap: 0 0.5rem;
+}
+.gapY-1 {
+  gap: 1rem 0;
+}
+.gapY-2 {
+  gap: 2rem 0;
+}
+.gapY-08 {
+  gap: 0.8rem 0;
+}
+.gapY-05 {
+  gap: 0.5rem 0;
+}
+//GAP
+
+// PADDINGS & MARGINS
+$spaceamounts: ("1", "2", 3, "4", "5");
+@each $space in $spaceamounts {
+  .m-#{$space} {
+    margin: #{$space}rem;
+  }
+  .my-#{$space} {
+    margin-top: #{$space}rem;
+    margin-bottom: #{$space}rem;
+  }
+  .mx-#{$space} {
+    margin-left: #{$space}rem;
+    margin-right: #{$space}rem;
+  }
+  .mt-#{$space} {
+    margin-top: #{$space}rem;
+  }
+  .mb-#{$space} {
+    margin-bottom: #{$space}rem;
+  }
+  .ml-#{$space} {
+    margin-left: #{$space}rem;
+  }
+  .mr-#{$space} {
+    margin-right: #{$space}rem;
+  }
+
+  .p-#{$space} {
+    padding: #{$space}rem;
+  }
+  .py-#{$space} {
+    padding-top: #{$space}rem;
+    padding-bottom: #{$space}rem;
+  }
+  .px-#{$space} {
+    padding-left: #{$space}rem;
+    padding-right: #{$space}rem;
+  }
+  .pt-#{$space} {
+    padding-top: #{$space}rem;
+  }
+  .pb-#{$space} {
+    padding-bottom: #{$space}rem;
+  }
+  .pl-#{$space} {
+    padding-left: #{$space}rem;
+  }
+  .pr-#{$space} {
+    padding-right: #{$space}rem;
+  }
+}
+.p-0 {
+  padding: 0;
+}
+.m-0 {
+  margin: 0;
+}
+.mt-auto {
+  margin-top: auto;
+}
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.mr-auto {
+  margin-right: auto;
+}
+.ml-auto {
+  margin-left: auto;
+}
+.py-auto {
+  padding-top: auto;
+  padding-bottom: auto;
+}
+.px-auto {
+  padding-left: auto;
+  padding-right: auto;
+}
+
+.ml-05 {
+  margin-left: 0.5rem;
+}
+.mr-05 {
+  margin-right: 0.5rem;
+}
+.mx-05 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.my-05 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.p-05 {
+  padding: 0.5rem;
+}
+.pl-05 {
+  padding-left: 0.5rem;
+}
+.pr-05 {
+  padding-right: 0.5rem;
+}
+.px-05 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.py-05 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.mt-05 {
+  margin-top: 0.5rem;
+}
+.mb-05 {
+  margin-bottom: 0.5rem;
+}
+.pt-05 {
+  padding-top: 0.5rem;
+}
+.pb-05 {
+  padding-bottom: 0.5rem;
+}
+// PADDINGS & MARGINS
+
+// BACKGROUND COLORS
+.bg-dark {
+  background-color: $dark-color;
+}
+.bg-black {
+  background-color: $black-color;
+}
+.bg-light {
+  background-color: $light-color;
+  color: $dark-color;
+}
+.bg-secondary {
+  background-color: $secondary-color;
+}
+.bg-primary {
+  background-color: $primary-color;
+}
+.bg-success {
+  background-color: $success-color;
+}
+.bg-danger {
+  background-color: $danger-color;
+  color: $light-color;
+}
+.bg-white {
+  background-color: $white-color;
+}
+.bg-transparent {
+  background: rgba(0, 0, 0, 0);
+}
+.border-none {
+  border: none;
+}
+// BACKGROUND COLORS
+
+// TEXT COLOURS
+.light-text {
+  color: $light-color;
+}
+.white-text {
+  color: $white-color;
+}
+.primary-text {
+  color: $primary-color;
+}
+.dark-text {
+  color: $dark-color;
+}
+.secondary-text {
+  color: $secondary-color;
+}
+.accent-text {
+  color: $accent-color;
+}
+.danger-text {
+  color: $danger-color;
+}
+.success-text {
+  color: $success-color;
+}
+.black-text {
+  color: $black-color;
+}
+.gray-text {
+  color: #777;
+}
+// TEXT COLOURS
+
+// FONT SIZES
+.xxs {
+  font-size: 0.8rem;
+}
+.xs {
+  font-size: 1.2rem;
+}
+.s {
+  font-size: 1.5rem;
+}
+.md {
+  font-size: 1.8rem;
+}
+.lg {
+  font-size: 3rem;
+}
+.xl {
+  font-size: 4rem;
+}
+// FONT SIZES
+
+// SIZING
+.w-100 {
+  width: 100%;
+}
+.w-95 {
+  width: 95%;
+}
+.w-90 {
+  width: 90%;
+}
+.w-85 {
+  width: 85%;
+}
+.w-80 {
+  width: 80%;
+}
+.w-75 {
+  width: 75%;
+}
+.w-70 {
+  width: 70%;
+}
+.w-65 {
+  width: 65%;
+}
+.w-60 {
+  width: 60%;
+}
+.w-55 {
+  width: 55%;
+}
+.w-50 {
+  width: 50%;
+}
+.w-45 {
+  width: 45%;
+}
+.w-40 {
+  width: 40%;
+}
+.w-35 {
+  width: 35%;
+}
+.w-30 {
+  width: 30%;
+}
+.w-25 {
+  width: 25%;
+}
+.w-20 {
+  width: 20%;
+}
+.w-15 {
+  width: 15%;
+}
+.w-10 {
+  width: 10%;
+}
+.w-5 {
+  width: 5%;
+}
+.w-0 {
+  width: 0;
+}
+.h-100 {
+  height: 100%;
+}
+.h-50 {
+  height: 50%;
+}
+.h-0 {
+  height: 0;
+}
+// SIZING
+
+//DISPLAY
+@mixin flex($justify, $align, $direction, $wrap) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-evenly {
+  justify-content: space-evenly;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.flex-column {
+  flex-direction: column;
+}
+.d-none {
+  display: none;
+}
+.d-block {
+  display: block;
+}
+.d-inline {
+  display: inline;
+}
+.d-inline-block {
+  display: inline-block;
+}
+.align-center {
+  align-items: center;
+}
+.align-start {
+  align-items: flex-start;
+}
+.align-end {
+  align-items: flex-end;
+}
+//DISPLAY
+
+//POSITION
+.pos-relative {
+  position: relative;
+}
+.pos-fixed {
+  position: fixed;
+}
+.pos-absolute {
+  position: absolute;
+}
+//POSITION
+
+//ANIMATIONS
+.fadeIn {
+  animation: fade-in 1500ms linear forwards;
+}
+
+.move-right {
+  animation: moveRight 800ms linear forwards;
+}
+
+.move-left {
+  animation: moveLeft 800ms linear forwards;
+}
+
+.move-up {
+  animation: moveUp 800ms linear forwards;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes moveRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveLeft {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+//ANIMATIONS
+
+//LINKS
+
+.image {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 720px) {
+  .show-mobile {
+    display: block;
+  }
+}
+
+//inputs
+.imageInput {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.customImageInput {
+  width: 100%;
+  border: 1px solid $primary-color;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0 1rem;
+  .customLabel {
+    width: 20%;
+    text-align: center;
+    margin: 0;
+    font-size: 1.1rem;
+    transition: all 200ms linear;
+    background-color: $primary-color;
+    color: $white-color;
+    padding: 0.7rem;
+    &:hover {
+      background-color: $accent-color;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.shortcutsContainer {
+  width: 21%;
+  position: fixed;
+  left: 0;
+  top: 93px;
+  margin-top: 2rem;
+  margin-left: .5rem;
+  .header {
+    margin-left: 0.8rem;
+  }
+  .scroll {
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.8rem;
+    direction: rtl;
+  }
+  @media (max-width: 950px) {
+    display: none;
+  }
+}

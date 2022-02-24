@@ -1,0 +1,23 @@
+.recentChatsContainer {
+  width: 21%;
+  position: fixed;
+  right: 0;
+  top: 93px;
+  margin-right: .5rem;
+  margin-top: 2rem;
+  .header {
+    margin-left: .8rem; 
+  }
+  .scroll {
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.8rem;
+  }
+  @media (max-width: 950px) {
+    width: 25%;
+  }
+  @media (max-width: 750px) {
+    display: none;
+  }
+}

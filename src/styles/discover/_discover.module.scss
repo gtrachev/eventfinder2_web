@@ -1,0 +1,91 @@
+$primary-color: #0488ed;
+$secondary-color: #003459;
+$accent-color: #ffbd0d;
+
+.optionsContainer {
+  z-index: 100;
+  width: 70%;
+  @media (max-width: 800px) {
+    width: 90%;
+  }
+  @media (max-width: 600px) {
+    width: 98%;
+  }
+}
+.discoverOption {
+  transition: all 200ms linear;
+  width: 30%;
+  padding: 1rem 1.2rem;
+  font-size: 1.2rem;
+  border-radius: 40px;
+  text-align: center;
+  background-color: rgba($primary-color, 0.1);
+  border: 1px solid $primary-color;
+  color: $primary-color;
+  overflow: hidden;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    color: $accent-color;
+  }
+  @media (max-width: 800px) {
+    padding: 0.5rem 0.6rem;
+    font-size: 1.1rem;
+    width: 32%;
+  }
+  @media (max-width: 600px) {
+    font-size: 1rem;
+    padding: 0.5rem 0.3rem;
+  }
+}
+
+.discoverOptionActive {
+  background-color: $secondary-color;
+  color: #ffffff;
+}
+
+.showFiltersEnter {
+  transition: all 200ms linear;
+  width: 0;
+  transform: translateX(-180px);
+}
+.showFiltersEnterActive {
+  width: 180px;
+  transform: translateX(0);
+}
+.showFiltersExit {
+  transition: all 200ms linear;
+  width: 180px;
+  transform: translateX(0);
+}
+.showFiltersExitActive {
+  width: 0;
+  transform: translateX(-180px);
+}
+
+.discoverEventContainer {
+  width: 45%;
+  min-width: 450px;
+  @media (max-width: 950px) {
+    min-width: 200px;
+    width: 90%;
+  }
+  @media (max-width: 500px) {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+.discoverEventsList {
+  @media (max-width: 500) {
+    gap: 10rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .flashContainer {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
+}

@@ -1,0 +1,57 @@
+.authFormContainer {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  border-radius: 10px;
+  button {
+    p {
+      padding: 0.2rem 0;
+    }
+  }
+  label,
+  p {
+    color: #0488ed;
+    font-weight: 300;
+    font-size: 1.3rem;
+    display: inline-block;
+  }
+  form {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(#0488ed, 1);
+  }
+  @media (max-width: 900px) {
+    min-width: 80%;
+  }
+  @media (max-width: 600px) {
+    min-width: 100%;
+    margin: 0;
+    padding: 2rem 1rem;
+  }
+}
+.countryDropdown {
+  width: 100%;
+  border: none;
+  border-bottom: 0.5px solid rgb(160, 160, 160);
+  font-size: 1.2rem;
+  padding: 0.3rem 0.5rem;
+}
+.interestCategoriesContainer {
+  border: 0.5px solid rgb(160, 160, 160);
+  border-radius: 20px;
+  padding: 1rem;
+}
+.dangerBg {
+  background-color: rgba(#fc4445, 0.2);
+  border-bottom: 0.5px solid #fc4445;
+  &.interestCategoriesContainer {
+    border: 0.5px solid #fc4445;
+  }
+}
+
+// .cardElement {
+
+// }

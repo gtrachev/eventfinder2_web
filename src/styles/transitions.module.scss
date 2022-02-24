@@ -1,0 +1,33 @@
+.fadeEnter {
+  opacity: 0;
+}
+.fadeEnterActive {
+  transition: opacity 200ms linear;
+  opacity: 1;
+}
+.fadeExit {
+  opacity: 1;
+}
+.fadeExitActive {
+  transition: opacity 200ms linear;
+  opacity: 0;
+}
+
+.slideXEnter {
+  opacity: 0;
+  transform: translateX(-300px);
+}
+.slideXEnterActive {
+  transition: all 200ms linear;
+  opacity: 1;
+  transform: translateX(0);
+}
+.slideXExit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.slideXExitActive {
+  transition: all 200ms linear;
+  opacity: 0;
+  transform: translateX(300px);
+}

@@ -1,0 +1,107 @@
+.discoverSearchContainer {
+  .usersBtn {
+    padding: 0.8rem 1rem;
+    border-radius: 40px;
+  }
+  @media (max-width: 900px) {
+    width: 100%;
+    flex-direction: column;
+    .formContainer {
+      width: 85%;
+    }
+    .discoverActionsContainer {
+      margin-top: 1rem;
+    }
+  }
+  @media (max-width: 600px) {
+    .formContainer {
+      width: 98%;
+      gap: 0 .5rem;
+      form {
+        width: 75%;
+        div {
+          padding: 0.5rem 0.8rem;
+          input {
+            font-size: 1.1rem;
+          }
+          i {
+            font-size: 1.2rem;
+          }
+        }
+      }
+      .usersBtn {
+        font-size: 1.1rem;
+        padding: 0.5rem 0.8rem;
+      }
+    }
+  }
+  @media (max-width: 500px) {
+    .formContainer {
+      .showMobile {
+        display: block;
+      }
+      .hideMobile {
+        display: none;
+      }
+    }
+  }
+}
+.discoverSort {
+  z-index: -10;
+  overflow: hidden;
+  .sortOption {
+    display: block;
+    border: none;
+    background: transparent;
+    span {
+      transition: all 200ms linear;
+    }
+    &:hover {
+      span {
+        color: #ffbd0d;
+      }
+      cursor: pointer;
+    }
+  }
+  @media (max-width: 900px) {
+    p {
+      font-size: 1.2rem;
+    }
+    .sortOption {
+      span {
+        font-size: 1rem;
+      }
+    }
+  }
+  @media (max-width: 800px) {
+    gap: 0 1rem;
+  }
+  @media (max-width: 600px) {
+    .sortOption {
+      i {
+        display: none;
+      }
+    }
+  }
+}
+
+.showSortEnter {
+  max-height: 0;
+}
+.showSortEnterActive {
+  transition: max-height 200ms linear;
+  max-height: 150px;
+}
+.showSortExit {
+  max-height: 150px;
+}
+.showSortExitActive {
+  transition: max-height 200ms linear;
+  max-height: 0;
+}
+
+@media (max-width: 600px) {
+  .lessMargin {
+    margin: 1rem 0;
+  }
+}

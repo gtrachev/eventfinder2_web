@@ -1,0 +1,188 @@
+.accountContainer {
+  width: 70%;
+  margin: 2rem auto;
+  @media (max-width: 800px) {
+    width: 90%;
+  }
+}
+.accountHeader {
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  width: 80%;
+  .profileImgContainer {
+    min-width: 150px;
+    max-width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  .followersContainerMobile {
+    display: none;
+  }
+  .followersContainer {
+    display: flex;
+    button:hover {
+      transform: scale(1);
+    }
+  }
+  .followersContainer,
+  .followersContainerMobile {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(160, 160, 160, 0.4);
+    button:first-child {
+      border-right: 1px solid rgba(160, 160, 160, 0.4);
+    }
+  }
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
+}
+.accountBody {
+  margin: 0 auto;
+  width: 100%;
+  #{&}Nav {
+    width: 100%;
+    display: flex;
+    .btnContainer {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+      &,
+      button {
+        transition: all 200ms linear;
+      }
+      &:hover {
+        button {
+          color: #ffbd0d;
+        }
+      }
+      button {
+        background-color: transparent;
+        border: none;
+        padding: 0.5rem;
+        font-size: 1.2rem;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    .activeBtn {
+      border-bottom: 1px solid #003459;
+      background-color: rgba(#003459, 0.1);
+      &:hover {
+        button {
+          color: #003459;
+        }
+      }
+    }
+  }
+  .postsContainer {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .accountContainer {
+    width: 95%;
+  }
+  .accountHeader {
+    .profileImgContainer {
+      min-width: 110px;
+      max-width: 110px;
+      height: 110px;
+    }
+    .followersContainer {
+      display: none;
+    }
+    .followersContainerMobile {
+      display: flex;
+    }
+    .usernameContainer {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin-left: 2rem;
+      h1 {
+        margin-bottom: 0.5rem;
+      }
+      button {
+        z-index: 10;
+      }
+    }
+  }
+  .accountBody {
+    .postsContainer {
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .accountHeader {
+    .usernameContainer {
+      margin-left: 0;
+    }
+    .profileImgContainer {
+      min-width: 90px;
+      max-width: 90px;
+      height: 90px;
+    }
+    .followersContainerMobile {
+      p {
+        font-size: 1.1rem;
+      }
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    button {
+      font-size: 1rem;
+    }
+  }
+  .accountBody {
+    #{&}Nav {
+      .btnContainer {
+        span {
+          display: none;
+        }
+        .showMobile {
+          display: block;
+        }
+        button {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
+
+.showInfoEnter {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-200px);
+}
+.showInfoEnterActive {
+  transition: all 200ms ease-in;
+  opacity: 1;
+  max-height: 250px;
+  transform: translateY(0);
+}
+.showInfoExit {
+  max-height: 250px;
+  opacity: 1;
+  transform: translateY(0);
+}
+.showInfoExitActive {
+  max-height: 0px;
+  opacity: 0;
+  transition: all 200ms ease-in;
+  transform: translateY(-200px);
+}
