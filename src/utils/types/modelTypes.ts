@@ -1,4 +1,3 @@
-import { ObjectId } from "mongoose";
 import { InterestEnum } from "./interestTypes";
 import { UserTiersEnum } from "./userTiers";
 
