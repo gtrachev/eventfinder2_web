@@ -6,10 +6,15 @@ import { noteActionTypes } from "../../utils/types/actionTypes/notesActionType";
 import { NoteInputType, NoteType } from "../../utils/types/modelTypes";
 import { getUser } from "./userActions";
 
+const apiUrl =
+  !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://eventfinder2-server.herokuapp.com";
+
 export const createNote = (noteData: NoteInputType) => (dispatch: Dispatch) => {
   return noteActionWrap(dispatch, async () => {
     const res = await axios.post<{ note?: NoteType; err_message?: string }>(
-      "https://eventfinder2-server.herokuapp.com/api/notes/create",
+      `${apiUrl}/api/notes/create`,
       noteData,
       withCredentials()
     );
@@ -27,7 +32,7 @@ export const deleteNote = (note_id: string) => (dispatch: Dispatch) => {
       deletedNote?: NoteType;
       message?: string;
       err_message?: string;
-    }>(`https://eventfinder2-server.herokuapp.com/api/notes/delete/${note_id}`, withCredentials());
+    }>(`${apiUrl}/api/notes/delete/${note_id}`, withCredentials());
     const deletedNote = res.data.deletedNote;
     if (deletedNote) {
       dispatch({

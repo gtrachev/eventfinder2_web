@@ -265,7 +265,7 @@ const EditEventForm: React.FC<{ eventDetails: EventType }> = ({
                         name="deletedImages"
                         id={image.filename}
                         value={image.filename}
-                        label={image.filename.slice(0, 20)}
+                        label={image.filename.slice(0, 10)}
                         component={CheckboxImageInputField}
                       >
                         <img src={image.path} alt={image.filename} />

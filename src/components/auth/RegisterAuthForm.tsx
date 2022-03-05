@@ -29,7 +29,9 @@ const registerInitialValues: registerFormikInitialValuesType = {
   interests: [],
 };
 
-const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}`);
+const stripePromise = loadStripe(
+  `${process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}`
+);
 
 const RegisterAuthForm: React.FC = () => {
   const dispatch = useDispatch();
@@ -40,11 +42,15 @@ const RegisterAuthForm: React.FC = () => {
   const [showCheckout, setShowCheckout] = useState(false);
   const [checkoutValues, setCheckoutValues] = useState<any>({});
 
+  const apiUrl =
+    !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://eventfinder2-server.herokuapp.com";
   const tier = new URLSearchParams(search).get("tier") || "";
   const handleRegister = async (values: registerFormikInitialValuesType) => {
     try {
       const res = await axios.get(
-        `https://eventfinder2-server.herokuapp.com/api/user/checkUsername/${values.username}`
+        `${apiUrl}/api/user/checkUsername/${values.username}`
       );
       if (res.data.availableUsername) {
         if (file) {
@@ -111,7 +117,7 @@ const RegisterAuthForm: React.FC = () => {
               tier === UserTiersTypes.standard
             ) {
               const res = await axios.get(
-                `https://eventfinder2-server.herokuapp.com/api/user/checkUsername/${values.username}`
+                `${apiUrl}/api/user/checkUsername/${values.username}`
               );
               if (res.data.availableUsername) {
                 setCheckoutValues(values);

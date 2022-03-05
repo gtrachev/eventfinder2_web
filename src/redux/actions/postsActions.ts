@@ -6,6 +6,11 @@ import { EventType, NoteType } from "../../utils/types/modelTypes";
 import { setIsLoading, setReqFailed } from "./helperActions";
 import withCredentials from "../../utils/helpers/withCredentials";
 
+const apiUrl =
+  !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://eventfinder2-server.herokuapp.com";
+
 export const getFollowedPosts =
   (fromDays: number) => async (dispatch: Dispatch) => {
     try {
@@ -13,10 +18,7 @@ export const getFollowedPosts =
       const res = await axios.get<{
         message?: string;
         followingPosts?: [EventType, NoteType];
-      }>(
-        `https://eventfinder2-server.herokuapp.com/api/posts/following/${fromDays}`,
-        withCredentials()
-      );
+      }>(`${apiUrl}/api/posts/following/${fromDays}`, withCredentials());
       const followingPosts = res.data.followingPosts;
       if (followingPosts) {
         dispatch({

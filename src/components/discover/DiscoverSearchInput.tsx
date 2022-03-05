@@ -36,9 +36,14 @@ const DiscoverSearchInput: React.FC<{
     search: yup.string().required().min(1).max(50),
   });
 
+  const apiUrl =
+    !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://eventfinder2-server.herokuapp.com";
+
   const handleSearch = (values: { search: string }) => {
     setFetchUrl(
-      `https://eventfinder2-server.herokuapp.com/api/events?search=${values.search}&interests=${filters.interests}&price=${filters.price}&ageGroup=${filters.ageGroup}&country=${filters.country}&city=${filters.city}`
+      `${apiUrl}/api/events?search=${values.search}&interests=${filters.interests}&price=${filters.price}&ageGroup=${filters.ageGroup}&country=${filters.country}&city=${filters.city}`
     );
   };
 

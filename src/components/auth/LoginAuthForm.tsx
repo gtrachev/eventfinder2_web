@@ -29,12 +29,17 @@ const LoginAuthForm: React.FC = () => {
     getUser()(dispatch);
   }, [dispatch]);
 
+  const apiUrl =
+    !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://eventfinder2-server.herokuapp.com";
+
   const handleLogin = async (values: {
     username: string;
     password: string;
   }) => {
     const res = await axios.post<{ validData: boolean }>(
-      `https://eventfinder2-server.herokuapp.com/api/user/checkUser`,
+      `${apiUrl}/api/user/checkUser`,
       {
         username: values.username,
         password: values.password,

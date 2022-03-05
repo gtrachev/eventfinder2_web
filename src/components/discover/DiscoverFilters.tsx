@@ -20,9 +20,13 @@ const DiscoverFilters: React.FC<{
     country: "",
     city: "",
   };
+  const apiUrl =
+    !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://eventfinder2-server.herokuapp.com";
   const handleFilter = (values: filterInitialValuesType) => {
     setFetchUrl(
-      `https://eventfinder2-server.herokuapp.com/api/events?interests=${values.interests.toString()}&price=${
+      `${apiUrl}/api/events?interests=${values.interests.toString()}&price=${
         values.price
       }&ageGroup=${values.ageGroup}&country=${values.country}&city=${
         values.city

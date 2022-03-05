@@ -12,6 +12,10 @@ const DiscoverOptions: React.FC<{
     setActiveOption(optionNum);
     setFetchUrl(fetchUrl);
   };
+  const apiUrl =
+    !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://eventfinder2-server.herokuapp.com";
   return (
     <div
       className={`mx-auto d-flex justify-between ${styles.optionsContainer}`}
@@ -21,7 +25,7 @@ const DiscoverOptions: React.FC<{
           activeOption === 0 && styles.discoverOptionActive
         }`}
         onClick={() =>
-          handleOptionClick(0, "https://eventfinder2-server.herokuapp.com/api/events/close_events")
+          handleOptionClick(0, `${apiUrl}/api/events/close_events`)
         }
       >
         <p>Events around you</p>
@@ -31,10 +35,7 @@ const DiscoverOptions: React.FC<{
           activeOption === 1 && styles.discoverOptionActive
         }`}
         onClick={() =>
-          handleOptionClick(
-            1,
-            "https://eventfinder2-server.herokuapp.com/api/events/popular_events"
-          )
+          handleOptionClick(1, `${apiUrl}/api/events/popular_events`)
         }
       >
         <p>Most popular events</p>
@@ -44,10 +45,7 @@ const DiscoverOptions: React.FC<{
           activeOption === 2 && styles.discoverOptionActive
         }`}
         onClick={() =>
-          handleOptionClick(
-            2,
-            "https://eventfinder2-server.herokuapp.com/api/events/interest_events"
-          )
+          handleOptionClick(2, `${apiUrl}/api/events/interest_events`)
         }
       >
         <p>Events you may like</p>

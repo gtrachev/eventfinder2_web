@@ -11,8 +11,12 @@ import styles from "../styles/discover/_discover.module.scss";
 const Discover: React.FC = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [sort, setSort] = useState({ sortBy: "", sort: "" });
+  const apiUrl =
+    !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://eventfinder2-server.herokuapp.com";
   const [fetchUrl, setFetchUrl] = useState(
-    "https://eventfinder2-server.herokuapp.com/api/events/popular_events"
+    `${apiUrl}/api/events/popular_events`
   );
   const handleShowFilters = () => {
     setShowFilters((prevShowFilters) => !prevShowFilters);

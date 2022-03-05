@@ -26,6 +26,10 @@ const CurrentChat: React.FC<{
   const socket = useRef<any>();
   const dispatch = useDispatch();
   const messageScroll = useRef<HTMLDivElement>(null);
+  const apiUrl =
+    !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://eventfinder2-server.herokuapp.com";
 
   //get current chat
   useEffect(() => {
@@ -41,19 +45,18 @@ const CurrentChat: React.FC<{
   //connect user to socket
   //respond on getMessage
   useEffect(() => {
-    socket.current = io("https://eventfinder2-server.herokuapp.com");
+    socket.current = io(apiUrl);
     socket.current.on("getMessage", (newMessage: MessageType) => {
       setNewMessages((prevMessages) => {
         return [...prevMessages, newMessage];
       });
     });
-
     return () => {
       setNewMessages([]);
     };
   }, []);
 
-  //emit joinRoom so that user can join chat room
+  //emit joinRoom so that user joins the chat room
   //respond on getOnlineUsers to get online users
   useEffect(() => {
     socket.current.emit("joinRoom", {

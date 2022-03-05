@@ -11,8 +11,7 @@ const DetailsMap: React.FC<{
   closeMap: () => void;
 }> = ({ coordinates, address, closeMap }) => {
   const Map = ReactMapboxGl({
-    accessToken:
-      "pk.eyJ1IjoiZ3RyYWNoZXYiLCJhIjoiY2ttaHhqaHduMGJxYjJ2bXR6cjVjeG9xeiJ9.UBDvpySOcpTTeKg8E3qo3w",
+    accessToken: `${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}`,
   });
 
   return (

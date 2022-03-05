@@ -20,6 +20,9 @@ import InterestCategories from "../../components/forms/InterestCategories";
 import Flash from "../flash/Flash";
 import IconButton from "../../styles/styledComponents/Buttons/IconButton";
 import styles from "../../styles/create/_eventForm.module.scss";
+import GoogleMapReact from "google-map-react";
+
+const AnyReactComponent = ({ text }: { text: string }) => <div>{text}</div>;
 
 const CreateForm: React.FC = () => {
   const [files, setFiles] = useState<any>([]);

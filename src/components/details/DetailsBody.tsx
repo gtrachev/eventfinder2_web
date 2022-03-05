@@ -71,14 +71,14 @@ const DetailsBody: React.FC<{
               <span>{new Date(eventDetails.date).toLocaleDateString()}</span>
             </p>
             <p className="">
-              <i className="fas fa-search-dollar s mr-05" />
-              Price: {eventDetails.price}$
+              <i className="far fa-clock s mr-05" />
+              Starting at: {eventDetails.time}
             </p>
           </div>
           <div className={styles.detailsInfoContainer}>
             <p className="">
-              <i className="far fa-clock s mr-05" />
-              Starting at: {eventDetails.time}
+              <i className="fas fa-search-dollar s mr-05" />
+              Price: {eventDetails.price}$
             </p>
             <IconButton className="xs secondary-text" onClick={showAttenders}>
               <p className="">

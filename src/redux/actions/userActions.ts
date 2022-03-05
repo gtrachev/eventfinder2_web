@@ -14,7 +14,10 @@ import {
 } from "../../utils/types/modelTypes";
 import { getDetails } from "./eventsActions";
 import { getFollowedPosts } from "./postsActions";
-
+const apiUrl =
+  !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://eventfinder2-server.herokuapp.com";
 export const getUser = (orderId?: string) => (dispatch: Dispatch) => {
   userActionWrap(dispatch, async () => {
     const res = await axios.get<{
@@ -22,11 +25,7 @@ export const getUser = (orderId?: string) => (dispatch: Dispatch) => {
       userPosts?: any;
       message?: string;
       err_message?: string;
-    }>(
-      "https://eventfinder2-server.herokuapp.com/api/user/current",
-      withCredentials()
-    );
-    console.log(res.data);
+    }>(`${apiUrl}/api/user/current`, withCredentials());
     const currentUser = res.data.user;
     const { userPosts } = res.data;
     dispatch({
@@ -48,10 +47,7 @@ export const getRecommendedUsers = () => (dispatch: Dispatch) => {
       recommendedUsers?: UserType[];
       message?: string;
       err_message?: string;
-    }>(
-      `https://eventfinder2-server.herokuapp.com/api/user/recommended`,
-      withCredentials()
-    );
+    }>(`${apiUrl}/api/user/recommended`, withCredentials());
     const recommendedUsers = res.data.recommendedUsers;
     dispatch({
       type: userActionTypes.GET_RECOMMENDED_USERS,
@@ -65,10 +61,7 @@ export const getUserById = (user_id: string) => (dispatch: Dispatch) => {
       user?: UserType;
       userPosts?: any;
       err_message?: string;
-    }>(
-      `https://eventfinder2-server.herokuapp.com/api/user/by_id/${user_id}`,
-      withCredentials()
-    );
+    }>(`${apiUrl}/api/user/by_id/${user_id}`, withCredentials());
     dispatch({
       type: userActionTypes.GET_USER_BYID,
       payload: {
@@ -84,7 +77,7 @@ export const loginUser =
   (dispatch: Dispatch) => {
     userActionWrap(dispatch, async () => {
       await axios.post<{ user: UserType; err_message?: string }>(
-        "https://eventfinder2-server.herokuapp.com/api/user/login",
+        `${apiUrl}/api/user/login`,
         userData,
         withCredentials()
       );
@@ -94,10 +87,7 @@ export const loginUser =
         likedNotes?: NoteType[];
         message?: string;
         err_message?: string;
-      }>(
-        "https://eventfinder2-server.herokuapp.com/api/user/current",
-        withCredentials()
-      );
+      }>(`${apiUrl}/api/user/current`, withCredentials());
       const currentUser = res.data.user;
       const { userPosts, likedNotes } = res.data;
       dispatch({
@@ -114,11 +104,7 @@ export const registerUser =
         user?: UserType;
         orderId?: string;
         err_message?: string;
-      }>(
-        "https://eventfinder2-server.herokuapp.com/api/user/register",
-        userData,
-        withCredentials()
-      );
+      }>(`${apiUrl}/api/user/register`, userData, withCredentials());
       const user = res.data.user;
       if (user) {
         getUser()(dispatch);
@@ -132,11 +118,7 @@ export const editUser =
       const res = await axios.put<{
         editedUser?: UserType;
         err_message?: string;
-      }>(
-        "https://eventfinder2-server.herokuapp.com/api/user/edit",
-        editUserData,
-        withCredentials()
-      );
+      }>(`${apiUrl}/api/user/edit`, editUserData, withCredentials());
       const editedUser = res.data.editedUser;
       if (editedUser) {
         dispatch({
@@ -151,7 +133,7 @@ export const editUser =
 export const logoutUser = () => (dispatch: Dispatch) => {
   userActionWrap(dispatch, async () => {
     await axios.get<{ message?: string; err_message?: string }>(
-      "https://eventfinder2-server.herokuapp.com/api/user/logout",
+      `${apiUrl}/api/user/logout`,
       withCredentials()
     );
     dispatch({
@@ -168,10 +150,7 @@ export const handleAttend = (event_id: string) => (dispatch: Dispatch) => {
       addedEvent?: EventType;
       user?: UserType;
       err_message?: string;
-    }>(
-      `https://eventfinder2-server.herokuapp.com/api/events/attend/${event_id}`,
-      withCredentials()
-    );
+    }>(`${apiUrl}/api/events/attend/${event_id}`, withCredentials());
     if (res.data.addedEvent) {
       dispatch({
         type: userActionTypes.USER_ATTEND,
@@ -198,10 +177,7 @@ export const handleSave = (event_id: string) => (dispatch: Dispatch) => {
       unsavedEvent?: string;
       savedEvent?: EventType;
       err_message?: string;
-    }>(
-      `https://eventfinder2-server.herokuapp.com/api/events/save/${event_id}`,
-      withCredentials()
-    );
+    }>(`${apiUrl}/api/events/save/${event_id}`, withCredentials());
     if (res.data.savedEvent) {
       dispatch({
         type: userActionTypes.SAVE_EVENT,
@@ -225,10 +201,7 @@ export const handleFollow = (account_id: string) => (dispatch: Dispatch) => {
       followedUser?: UserType;
       unfollowedUser?: UserType;
       err_message?: string;
-    }>(
-      `https://eventfinder2-server.herokuapp.com/api/user/follow/${account_id}`,
-      withCredentials()
-    );
+    }>(`${apiUrl}/api/user/follow/${account_id}`, withCredentials());
     if (res.data.followedUser) {
       dispatch({
         type: userActionTypes.FOLLOW,
@@ -254,10 +227,7 @@ export const handleUserLikeNote = (note_id: string) => (dispatch: Dispatch) => {
       unlikedBy?: UserType;
       unlikedNote?: NoteType;
       err_message?: string;
-    }>(
-      `https://eventfinder2-server.herokuapp.com/api/notes/like/${note_id}`,
-      withCredentials()
-    );
+    }>(`${apiUrl}/api/notes/like/${note_id}`, withCredentials());
     if (res.data.likedBy) {
       dispatch({
         type: userActionTypes.LIKE_NOTE,

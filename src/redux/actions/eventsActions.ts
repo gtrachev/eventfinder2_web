@@ -11,6 +11,11 @@ import {
 } from "../../utils/types/modelTypes";
 import { getUser } from "./userActions";
 
+const apiUrl =
+  !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://eventfinder2-server.herokuapp.com";
+
 export const getEvents = (fetchURL: string) => (dispatch: Dispatch) => {
   eventActionWrap(dispatch, async () => {
     const res = await axios.get<{ events: EventType[]; err_message?: string }>(
@@ -33,10 +38,7 @@ export const getDetails = (event_id: string) => (dispatch: Dispatch) => {
       event?: EventType;
       message?: string;
       err_message?: string;
-    }>(
-      `https://eventfinder2-server.herokuapp.com/api/events/details/${event_id}`,
-      withCredentials()
-    );
+    }>(`${apiUrl}/api/events/details/${event_id}`, withCredentials());
     const event = res.data.event;
     if (event) {
       dispatch({
@@ -53,18 +55,14 @@ export const createEvent =
       const res = await axios.post<{
         newEvent?: EventType;
         err_message?: string;
-      }>(
-        "https://eventfinder2-server.herokuapp.com/api/events/create",
-        eventData,
-        withCredentials()
-      );
+      }>(`${apiUrl}/api/events/create`, eventData, withCredentials());
       const newEvent = res.data.newEvent;
       if (newEvent) {
         dispatch({
           type: eventActionTypes.CREATE_EVENT,
           payload: newEvent,
         });
-        getEvents("https://eventfinder2-server.herokuapp.com/api/events/popular_events")(dispatch);
+        getEvents(`${apiUrl}/api/events/popular_events`)(dispatch);
         getUser()(dispatch);
       }
     });
@@ -79,7 +77,7 @@ export const editEvent =
         message?: string;
         err_message?: string;
       }>(
-        `https://eventfinder2-server.herokuapp.com/api/events/edit/${event_id}`,
+        `${apiUrl}/api/events/edit/${event_id}`,
         { eventData, deletedImages },
         withCredentials()
       );
@@ -99,10 +97,7 @@ export const deleteEvent = (event_id: string) => (dispatch: Dispatch) => {
       deletedEvent?: EventType;
       message?: string;
       err_message?: string;
-    }>(
-      `https://eventfinder2-server.herokuapp.com/api/events/delete/${event_id}`,
-      withCredentials()
-    );
+    }>(`${apiUrl}/api/events/delete/${event_id}`, withCredentials());
     if (res.data.deletedEvent) {
       dispatch({
         type: eventActionTypes.DELETE_EVENT,
@@ -120,7 +115,7 @@ export const createReview =
         message?: string;
         err_message?: string;
       }>(
-        `https://eventfinder2-server.herokuapp.com/api/reviews/create/${event_id}`,
+        `${apiUrl}/api/reviews/create/${event_id}`,
         reviewData,
         withCredentials()
       );
@@ -142,10 +137,7 @@ export const deleteReview =
         deletedReview?: string;
         message?: string;
         err_message?: string;
-      }>(
-        `https://eventfinder2-server.herokuapp.com/api/reviews/delete/${review_id}`,
-        withCredentials()
-      );
+      }>(`${apiUrl}/api/reviews/delete/${review_id}`, withCredentials());
       const deleted_id = res.data.deletedReview;
       if (deleted_id) {
         dispatch({

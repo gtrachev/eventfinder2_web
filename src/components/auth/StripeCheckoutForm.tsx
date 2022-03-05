@@ -21,6 +21,10 @@ const StripeCheckoutForm: React.FC<{
   const elements = useElements();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const apiUrl =
+    !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://eventfinder2-server.herokuapp.com";
   const handleResponse = async (paymentResponse: any) => {
     if (paymentResponse.success && paymentResponse.user) {
       await getUser()(dispatch);
@@ -72,7 +76,7 @@ const StripeCheckoutForm: React.FC<{
           user?: UserType;
           success?: string;
           error?: string;
-        }>("https://eventfinder2-server.herokuapp.com/api/user/register", {
+        }>(`${apiUrl}/api/user/register`, {
           ...values,
           userTier: tier,
           profileImage: {
@@ -89,7 +93,7 @@ const StripeCheckoutForm: React.FC<{
           payment_intent_client_secret?: string;
           success?: string;
           error?: string;
-        }>("https://eventfinder2-server.herokuapp.com/api/user/register", {
+        }>(`${apiUrl}/api/user/register`, {
           ...values,
           userTier: tier,
           payment_method_id: result.paymentMethod.id,

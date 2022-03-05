@@ -28,7 +28,6 @@ const App: React.FC = () => {
   const navigate = useNavigate();
   useEffect(() => {
     getUser()(dispatch);
-    console.log(userSlice);
     if (!userSlice.isLoading && errorSlice?.error && errorSlice.error.length) {
       navigate("/error");
     }
@@ -68,3 +67,6 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+// "start": "node --max_old_space_size=2560 node_modules/.bin/react-scripts start",
+// "build": "node --max_old_space_size=2560 node_modules/.bin/react-scripts build",

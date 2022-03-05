@@ -12,10 +12,15 @@ import {
 } from "../../utils/types/modelTypes";
 import { getUser } from "./userActions";
 
+const apiUrl =
+  !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://eventfinder2-server.herokuapp.com";
+
 export const getChat = (chat_id: string) => (dispatch: Dispatch) => {
   chatActionWrap(dispatch, async () => {
     const res = await axios.get<{ chat?: ChatType; err_message?: string }>(
-      `https://eventfinder2-server.herokuapp.com/api/chats/${chat_id}`,
+      `${apiUrl}/api/chats/${chat_id}`,
       withCredentials()
     );
     const chat = res.data.chat;
@@ -31,7 +36,7 @@ export const getChat = (chat_id: string) => (dispatch: Dispatch) => {
 export const createChat = (member_id: string) => (dispatch: Dispatch) => {
   chatActionWrap(dispatch, async () => {
     const res = await axios.get<{ newUserChat?: ChatType; message?: string }>(
-      `https://eventfinder2-server.herokuapp.com/api/chats/create/${member_id}`,
+      `${apiUrl}/api/chats/create/${member_id}`,
       withCredentials()
     );
     const newUserChat = res.data.newUserChat;
@@ -58,7 +63,7 @@ export const joinEventChat = (event_id: string) => (dispatch: Dispatch) => {
       joinedChat?: ChatType;
       addedMember?: UserType;
       err_message?: string;
-    }>(`https://eventfinder2-server.herokuapp.com/api/chats/join/${event_id}`, withCredentials());
+    }>(`${apiUrl}/api/chats/join/${event_id}`, withCredentials());
     const { joinedChat, addedMember } = res.data;
     if (joinedChat && addedMember) {
       dispatch({
@@ -79,7 +84,7 @@ export const leaveEventChat = (event_id: string) => (dispatch: Dispatch) => {
       leftChat?: ChatType;
       removedMember?: UserType;
       err_message?: string;
-    }>(`https://eventfinder2-server.herokuapp.com/api/chats/join/${event_id}`, withCredentials());
+    }>(`${apiUrl}/api/chats/join/${event_id}`, withCredentials());
     const { leftChat, removedMember } = res.data;
     if (leftChat && removedMember) {
       dispatch({
@@ -101,7 +106,7 @@ export const createMessage =
         newMessage?: MessageType;
         err_message?: string;
       }>(
-        `https://eventfinder2-server.herokuapp.com/api/chats/message/${chat_id}`,
+        `${apiUrl}/api/chats/message/${chat_id}`,
         messageData,
         withCredentials()
       );

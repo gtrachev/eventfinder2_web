@@ -10,8 +10,12 @@ import LoadingContainer from "../layout/LoadingContainer";
 import styles from "../../styles/home/_postList.module.scss";
 
 const PostList: React.FC<{ posts: [any] }> = ({ posts }) => {
+  const apiUrl =
+    !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://eventfinder2-server.herokuapp.com";
   const dispatch = useDispatch();
-  const fetchUrl = `http://eventfinder2-server.herokuapp.com/api/events/popular_events`;
+  const fetchUrl = `${apiUrl}/api/events/popular_events`;
   const eventsSlice = useSelector((state: RootState) => state.events);
   const userSlice = useSelector((state: RootState) => state.users);
   useEffect(() => {
