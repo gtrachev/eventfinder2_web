@@ -22,7 +22,7 @@ const PostList: React.FC<{ posts: [any] }> = ({ posts }) => {
     if (userSlice.currentUser) {
       getEvents(fetchUrl)(dispatch);
     }
-  }, [fetchUrl, dispatch]);
+  }, [fetchUrl, dispatch, userSlice.currentUser]);
 
   return (
     <div className={styles.postsList}>

@@ -3,15 +3,12 @@ import React from "react";
 import IconButton from "../../styles/styledComponents/Buttons/IconButton";
 import MessageInput from "../../styles/styledComponents/Forms/MessageInput";
 import resizeTextarea from "../helpers/resizeTextarea";
-import { uppercase } from "../helpers/uppercase";
 
 const MessageInputField: React.FC<
   FieldProps & {
     placeholder?: string;
   }
 > = ({ field, form, placeholder, ...props }) => {
-  const errMsg = form.touched[field.name] && form.errors[field.name];
-
   return (
     <MessageInput className="messageInput">
       <textarea

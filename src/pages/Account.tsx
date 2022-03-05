@@ -7,7 +7,6 @@ import Flash from "../components/flash/Flash";
 import { getUserById } from "../redux/actions/userActions";
 import { RootState } from "../redux/rootReducer";
 import styles from "../styles/account/_account.module.scss";
-import { uiActionTypes } from "../utils/types/actionTypes/uiActionTypes";
 
 const Account: React.FC = () => {
   const { user_id = "" } = useParams();

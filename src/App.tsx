@@ -23,7 +23,6 @@ import "./styles/utilities.scss";
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const userSlice = useSelector((state: RootState) => state.users);
-  const uiSlice = useSelector((state: RootState) => state.ui);
   const errorSlice = useSelector((state: RootState) => state.errors);
   const navigate = useNavigate();
   useEffect(() => {

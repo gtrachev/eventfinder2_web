@@ -62,7 +62,6 @@ const eventReducer = (
             : [action.payload],
         },
       };
-      return state;
     case eventActionTypes.DELETE_REVIEW:
       if (state.eventDetails) {
         return {

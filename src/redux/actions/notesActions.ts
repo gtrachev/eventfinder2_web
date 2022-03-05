@@ -4,7 +4,6 @@ import { noteActionWrap } from "../../utils/helpers/actionWrap";
 import withCredentials from "../../utils/helpers/withCredentials";
 import { noteActionTypes } from "../../utils/types/actionTypes/notesActionType";
 import { NoteInputType, NoteType } from "../../utils/types/modelTypes";
-import { getUser } from "./userActions";
 
 const apiUrl =
   !process.env.NODE_ENV || process.env.NODE_ENV === "development"

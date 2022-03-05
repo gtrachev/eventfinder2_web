@@ -24,7 +24,7 @@ const DiscoverFindUsers: React.FC<{
   const dispatch = useDispatch();
   useEffect(() => {
     getRecommendedUsers()(dispatch);
-  }, []);
+  }, [dispatch]);
 
   const handleAccountFollow = (userId: string) => {
     handleFollow(userId)(dispatch);

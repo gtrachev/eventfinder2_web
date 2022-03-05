@@ -10,8 +10,6 @@ const RadioInputField: React.FC<
     isChecked: boolean;
   }
 > = ({ field, form, label, id, value, isChecked, ...props }) => {
-  const errMsg = form.touched[field.name] && form.errors[field.name];
-
   return (
     <div>
       <label htmlFor={id}>

@@ -1,5 +1,4 @@
 import { Action } from "../rootReducer";
-import { UserType } from "../../utils/types/modelTypes";
 import {
   userActionEnum,
   userActionTypes,

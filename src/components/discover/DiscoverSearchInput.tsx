@@ -61,7 +61,7 @@ const DiscoverSearchInput: React.FC<{
         payload: { show: false, mobile: false },
       });
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={`my-2 w-100 ${styles.lessMargin}`}>

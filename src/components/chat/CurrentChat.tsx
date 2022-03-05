@@ -54,7 +54,7 @@ const CurrentChat: React.FC<{
     return () => {
       setNewMessages([]);
     };
-  }, []);
+  }, [apiUrl]);
 
   //emit joinRoom so that user joins the chat room
   //respond on getOnlineUsers to get online users
@@ -76,7 +76,7 @@ const CurrentChat: React.FC<{
         setOnlineUsers(onlineUsers);
       }
     );
-  }, []);
+  }, [chat_id]);
 
   const handleSendMessage = (
     values: { text: string },

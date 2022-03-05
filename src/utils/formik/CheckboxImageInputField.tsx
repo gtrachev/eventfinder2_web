@@ -11,8 +11,6 @@ const CheckboxImageInputField: React.FC<
     isChecked: boolean;
   }
 > = ({ field, form, id, value, label, isChecked, ...props }) => {
-  const errMsg = form.touched[field.name] && form.errors[field.name];
-
   return (
     <div
       className={`pos-relative d-flex flex-column align-center ${styles.checkboxImageInputContainer}`}

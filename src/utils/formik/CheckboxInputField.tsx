@@ -9,8 +9,6 @@ const CheckboxInputField: React.FC<
     isChecked: boolean;
   }
 > = ({ field, form, id, value, label, isChecked, ...props }) => {
-  const errMsg = form.touched[field.name] && form.errors[field.name];
-
   return (
     <div>
       <label htmlFor={id}>
