@@ -7,7 +7,6 @@ import { uiActionTypes } from "../utils/types/actionTypes/uiActionTypes";
 import DetailsHeader from "../components/details/DetailsHeader";
 import DetailsBody from "../components/details/DetailsBody";
 import DetailsComments from "../components/details/comments/DetailsComments";
-import DetailsMap from "../components/details/DetailsMap";
 import LoadingContainer from "../components/layout/LoadingContainer";
 import styles from "../styles/details/_details.module.scss";
 
@@ -35,7 +34,7 @@ const Details: React.FC = () => {
       <DetailsHeader eventDetails={eventDetails} />
       <DetailsBody eventDetails={eventDetails} setShowMap={setShowMap} />
       <DetailsComments eventDetails={eventDetails} />;
-      {showMap && (
+      {/* {showMap && (
         <DetailsMap
           coordinates={[
             eventDetails.geometry.coordinates[0],
@@ -44,7 +43,7 @@ const Details: React.FC = () => {
           address={eventDetails.address}
           closeMap={closeMap}
         />
-      )}
+      )} */}
     </div>
   ) : (
     <LoadingContainer />
