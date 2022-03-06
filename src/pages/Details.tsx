@@ -9,6 +9,7 @@ import DetailsBody from "../components/details/DetailsBody";
 import DetailsComments from "../components/details/comments/DetailsComments";
 import LoadingContainer from "../components/layout/LoadingContainer";
 import styles from "../styles/details/_details.module.scss";
+import DetailsMap from "../components/details/DetailsMap";
 
 const Details: React.FC = () => {
   const { event_id } = useParams();
@@ -34,7 +35,7 @@ const Details: React.FC = () => {
       <DetailsHeader eventDetails={eventDetails} />
       <DetailsBody eventDetails={eventDetails} setShowMap={setShowMap} />
       <DetailsComments eventDetails={eventDetails} />;
-      {/* {showMap && (
+      {showMap && (
         <DetailsMap
           coordinates={[
             eventDetails.geometry.coordinates[0],
@@ -43,7 +44,7 @@ const Details: React.FC = () => {
           address={eventDetails.address}
           closeMap={closeMap}
         />
-      )} */}
+      )}
     </div>
   ) : (
     <LoadingContainer />
