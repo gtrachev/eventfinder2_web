@@ -85,10 +85,10 @@ const AccountHeader: React.FC<{}> = () => {
               {userSlice?.currentUser._id === user_id ? (
                 <>
                   <Button
-                    className="xs mr-1"
+                    className="xs mr-05"
                     onClick={() => setShowInfo((prevShowInfo) => !prevShowInfo)}
                   >
-                    Account information
+                    Information
                   </Button>
                   <DangerButton className="xs" onClick={handleLogout}>
                     Log out
