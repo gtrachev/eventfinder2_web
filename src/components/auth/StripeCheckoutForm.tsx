@@ -33,7 +33,7 @@ const StripeCheckoutForm: React.FC<{
         type: uiActionTypes.SET_FLASH,
         payload: {
           type: "success",
-          message: `Welcome ${values.username}.`,
+          message: `Welcome ${values.username}. You can now log into your account.`,
         },
       });
     } else if (paymentResponse.requires_action) {
