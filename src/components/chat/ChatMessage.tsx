@@ -9,7 +9,10 @@ const ChatMessage: React.FC<{
   isAuthor: boolean;
 }> = ({ chatMessage, isAuthor }) => {
   return isAuthor ? (
-    <div className={`${styles.message} ${styles.owned}`}>
+    <div
+      data-testid={`messageAuthor${chatMessage._id}`}
+      className={`${styles.message} ${styles.owned}`}
+    >
       <div className={styles.chatText}>{chatMessage.text}</div>
       <div className={styles.profileImgContainer}>
         <img
@@ -20,7 +23,10 @@ const ChatMessage: React.FC<{
       <TimeAgo className={styles.createdAt} datetime={chatMessage.createdAt} />
     </div>
   ) : (
-    <div className={`${styles.message}`}>
+    <div
+      data-testid={`messageNotAuthor${chatMessage._id}`}
+      className={`${styles.message}`}
+    >
       <NavLink to={`/account/${chatMessage.author._id}`}>
         <div className={styles.profileImgContainer}>
           <img

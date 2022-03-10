@@ -12,7 +12,7 @@ const AccountPostsList: React.FC<{ posts: any; errMsg: string }> = ({
     <div className={styles.postsContainer}>
       {posts.length ? (
         posts.map((post: any) => {
-          if (post.price) {
+          if (post) {
             return <Event event={post} size="big" key={post._id} />;
           } else {
             return <Note note={post} key={post._id} />;

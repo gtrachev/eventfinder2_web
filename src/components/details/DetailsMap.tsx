@@ -4,9 +4,6 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import IconButton from "../../styles/styledComponents/Buttons/IconButton";
 import ExitButton from "../../styles/styledComponents/Buttons/ExitButton";
 import styles from "../../styles/details/_details.module.scss";
-import mapboxgl from "mapbox-gl";
-mapboxgl.workerCount =
-  require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 const DetailsMap: React.FC<{
   coordinates: [number, number];
@@ -16,7 +13,6 @@ const DetailsMap: React.FC<{
   const Map = ReactMapboxGl({
     accessToken: `${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}`,
   });
-  console.log(coordinates);
   return (
     <div className={styles.detailsMap}>
       <Map
