@@ -231,7 +231,11 @@ const DiscoverFilters: React.FC<{
               <Button className="w-90 xs d-block mx-auto mb-05" type="submit">
                 Filter
               </Button>
-              <IconButton onClick={() => props.resetForm()} type="button">
+              <IconButton
+                className="primary-text xs"
+                onClick={() => props.resetForm()}
+                type="button"
+              >
                 Clear filters
               </IconButton>
             </Form>
